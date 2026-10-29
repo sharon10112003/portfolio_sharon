@@ -4,9 +4,10 @@ import { portfolioData } from '../data/portfolioData';
 
 interface ContactProps {
   onShowToast: (message: string) => void;
+  isMobileMockup?: boolean;
 }
 
-export function Contact({ onShowToast }: ContactProps) {
+export function Contact({ onShowToast, isMobileMockup = false }: ContactProps) {
   const { personal, socialLinks } = portfolioData;
 
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -90,9 +91,9 @@ export function Contact({ onShowToast }: ContactProps) {
         </div>
 
         {/* 2-Column Contact Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className={`grid grid-cols-1 ${isMobileMockup ? '' : 'lg:grid-cols-12'} gap-8 items-start`}>
           {/* Left Column: Direct Contact Info & Socials */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className={`${isMobileMockup ? '' : 'lg:col-span-5'} space-y-4`}>
             {/* Direct Email Card with One-Click Copy */}
             <div className="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80">
               <div className="flex items-start justify-between gap-3 mb-2">
@@ -263,7 +264,7 @@ export function Contact({ onShowToast }: ContactProps) {
           </div>
 
           {/* Right Column: Functional Message Composer */}
-          <div className="lg:col-span-7">
+          <div className={`${isMobileMockup ? 'mt-6' : 'lg:col-span-7'}`}>
             <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 shadow-xl">
               <div className="flex items-center gap-2 mb-2">
                 <MessageSquare className="w-4 h-4 text-emerald-400" />

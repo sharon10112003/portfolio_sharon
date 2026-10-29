@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { Layout, Server, Database, Wrench, Code2, CheckCircle2, Shield } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export function Skills() {
+interface SkillsProps {
+  isMobileMockup?: boolean;
+}
+
+export function Skills({ isMobileMockup = false }: SkillsProps) {
   const { skills, concepts } = portfolioData;
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -117,7 +121,7 @@ export function Skills() {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid grid-cols-1 ${isMobileMockup ? '' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6`}>
           {filteredCategories.map((category, catIdx) => (
             <div
               key={catIdx}

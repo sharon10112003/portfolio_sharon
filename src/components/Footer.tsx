@@ -1,7 +1,11 @@
 import { ArrowUp, Github, Linkedin, Mail, Heart } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export function Footer() {
+interface FooterProps {
+  isMobileMockup?: boolean;
+}
+
+export function Footer({ isMobileMockup = false }: FooterProps) {
   const { personal, socialLinks } = portfolioData;
 
   const scrollToTop = () => {
@@ -23,7 +27,7 @@ export function Footer() {
   return (
     <footer className="no-print bg-zinc-950 border-t border-zinc-900 py-12 text-xs text-zinc-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-zinc-850">
+        <div className={`flex flex-col ${isMobileMockup ? '' : 'md:flex-row'} items-center justify-between gap-6 pb-8 border-b border-zinc-850`}>
           {/* Identity */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <a

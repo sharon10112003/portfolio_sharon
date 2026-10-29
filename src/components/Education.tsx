@@ -3,13 +3,14 @@ import { portfolioData } from '../data/portfolioData';
 
 interface EducationProps {
   onOpenGuide: () => void;
+  isMobileMockup?: boolean;
 }
 
-export function Education({ onOpenGuide }: EducationProps) {
+export function Education({ onOpenGuide, isMobileMockup = false }: EducationProps) {
   const { education, certifications } = portfolioData;
 
   return (
-    <section id="education" className="py-20 lg:py-28 relative bg-zinc-950/60 border-t border-zinc-900">
+    <section id="education" className={`${isMobileMockup ? 'py-12' : 'py-20 lg:py-28'} relative bg-zinc-950/60 border-t border-zinc-900`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">

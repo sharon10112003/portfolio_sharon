@@ -6,9 +6,10 @@ import { ThemeSwitcher } from './ThemeSwitcher';
 interface NavbarProps {
   onOpenResume: () => void;
   onOpenGuide: () => void;
+  isMobileMockup?: boolean;
 }
 
-export function Navbar({ onOpenResume, onOpenGuide }: NavbarProps) {
+export function Navbar({ onOpenResume, onOpenGuide, isMobileMockup = false }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -48,18 +49,20 @@ export function Navbar({ onOpenResume, onOpenGuide }: NavbarProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-zinc-950/85 backdrop-blur-md border-b border-zinc-800/80 shadow-lg shadow-black/30 py-3.5'
+      className={`${
+        isMobileMockup ? 'sticky top-0' : 'fixed top-0'
+      } left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled || isMobileMockup
+          ? 'bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80 shadow-lg shadow-black/30 py-3'
           : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-8">
+        <div className="flex items-center justify-between gap-4">
           {/* Zone 1: Clean single-element Brand wordmark with Sharon's Photo */}
           <a
             href="#hero"
-            className="flex items-center gap-2.5 group whitespace-nowrap shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-md"
+            className="flex items-center gap-2 group whitespace-nowrap shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-md"
             aria-label={`${portfolioData.personal.name} Home`}
           >
             <div className="relative w-8 h-8 rounded-lg overflow-hidden ring-1.5 ring-emerald-400/80 shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform shrink-0 bg-zinc-900">
@@ -72,56 +75,60 @@ export function Navbar({ onOpenResume, onOpenGuide }: NavbarProps) {
                 }}
               />
             </div>
-            <span className="text-base sm:text-lg font-bold tracking-tight text-zinc-100 group-hover:text-emerald-400 transition-colors">
+            <span className="text-base font-bold tracking-tight text-zinc-100 group-hover:text-emerald-400 transition-colors">
               {portfolioData.personal.name}
             </span>
           </a>
 
-          {/* Zone 2: Clean single-line text navigation links */}
-          <nav
-            className="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-400"
-            aria-label="Main Navigation"
-          >
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  className={`relative py-1 transition-colors whitespace-nowrap shrink-0 hover:text-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-sm ${
-                    isActive ? 'text-emerald-400 font-semibold' : ''
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
-                  )}
-                </a>
-              );
-            })}
-          </nav>
+          {/* Zone 2: Clean single-line text navigation links (Hidden in mobile mockup mode) */}
+          {!isMobileMockup && (
+            <nav
+              className="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-400"
+              aria-label="Main Navigation"
+            >
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    className={`relative py-1 transition-colors whitespace-nowrap shrink-0 hover:text-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-sm ${
+                      isActive ? 'text-emerald-400 font-semibold' : ''
+                    }`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
+                    )}
+                  </a>
+                );
+              })}
+            </nav>
+          )}
 
           {/* Zone 3: Primary Action buttons */}
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             {/* Theme Selector */}
             <ThemeSwitcher />
 
             {/* Guide & Customize button */}
-            <button
-              onClick={onOpenGuide}
-              type="button"
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-300 bg-zinc-900 border border-zinc-800 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors cursor-pointer"
-              title="View deployment guide & customize placeholders"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Guide & Deploy</span>
-            </button>
+            {!isMobileMockup && (
+              <button
+                onClick={onOpenGuide}
+                type="button"
+                className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-300 bg-zinc-900 border border-zinc-800 rounded-lg hover:bg-zinc-800 hover:text-white transition-colors cursor-pointer"
+                title="View deployment guide & customize placeholders"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Guide & Deploy</span>
+              </button>
+            )}
 
             {/* Resume CTA */}
             <button
               onClick={onOpenResume}
               type="button"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-zinc-950 bg-emerald-400 hover:bg-emerald-300 rounded-lg shadow-sm shadow-emerald-500/20 transition-all hover:shadow-emerald-500/40 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-950 bg-emerald-400 hover:bg-emerald-300 rounded-lg shadow-sm shadow-emerald-500/20 transition-all hover:shadow-emerald-500/40 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
             >
               <FileText className="w-3.5 h-3.5" />
               <span>Resume</span>
@@ -131,7 +138,9 @@ export function Navbar({ onOpenResume, onOpenGuide }: NavbarProps) {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-850 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              className={`${
+                isMobileMockup ? 'block' : 'md:hidden'
+              } p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-emerald-400`}
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >

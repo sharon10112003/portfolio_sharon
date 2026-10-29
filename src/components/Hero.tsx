@@ -19,9 +19,10 @@ import { ThreeScene } from './ThreeScene';
 interface HeroProps {
   onOpenResume: () => void;
   onOpenGuide: () => void;
+  isMobileMockup?: boolean;
 }
 
-export function Hero({ onOpenResume }: HeroProps) {
+export function Hero({ onOpenResume, onOpenGuide, isMobileMockup = false }: HeroProps) {
   const { personal, socialLinks } = portfolioData;
   const [visualMode, setVisualMode] = useState<'portrait' | 'blackcoat' | 'studio' | '3d'>('portrait');
 
@@ -31,7 +32,9 @@ export function Hero({ onOpenResume }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] flex items-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden"
+      className={`relative min-h-[92vh] flex items-center ${
+        isMobileMockup ? 'pt-16 pb-12' : 'pt-28 pb-16 lg:pt-32 lg:pb-24'
+      } overflow-hidden`}
     >
       {/* Background ambient lighting from Sharon's portfolio: Teal, Sky Blue, and Deep Indigo */}
       <div
@@ -48,9 +51,9 @@ export function Hero({ onOpenResume }: HeroProps) {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className={`grid grid-cols-1 ${isMobileMockup ? '' : 'lg:grid-cols-12'} gap-8 items-center`}>
           {/* Left Column: Typographic Hierarchy inspired by Sharon's GitHub Pages */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className={`${isMobileMockup ? '' : 'lg:col-span-7'} flex flex-col justify-center`}>
             {/* Sharon's Starting Profile Photo & Introduction Badge */}
             <div className="flex items-center gap-4 mb-6 p-2.5 sm:p-3 pr-6 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 backdrop-blur-xl w-fit shadow-2xl shadow-emerald-500/10">
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden ring-2 ring-emerald-400 shadow-md shrink-0 bg-zinc-950">
@@ -98,7 +101,7 @@ export function Hero({ onOpenResume }: HeroProps) {
             </div>
 
             {/* Main Headline with Sharon's signature gradient */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+            <h1 className={`${isMobileMockup ? 'text-3xl' : 'text-4xl sm:text-5xl lg:text-6xl'} font-extrabold tracking-tight text-white mb-4 leading-tight`}>
               Hi, I'm{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4facfe] via-[#a855f7] to-[#43e97b]">
                 Sharon
@@ -203,7 +206,7 @@ export function Hero({ onOpenResume }: HeroProps) {
           </div>
 
           {/* Right Column: Visual Showcase (Multi-Mode: Black Coat / Studio Portrait / Three.js 3D) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <div className={`${isMobileMockup ? 'mt-4' : 'lg:col-span-5'} flex justify-center lg:justify-end`}>
             <div className="relative w-full max-w-md lg:max-w-none">
               {/* Decorative backplate glow */}
               <div

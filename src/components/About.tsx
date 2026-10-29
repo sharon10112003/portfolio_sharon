@@ -1,7 +1,11 @@
 import { Code2, Server, Database, ShieldCheck, Layers, GraduationCap, CheckCircle2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
-export function About() {
+interface AboutProps {
+  isMobileMockup?: boolean;
+}
+
+export function About({ isMobileMockup = false }: AboutProps) {
   const { personal, concepts } = portfolioData;
 
   const coreFocusAreas = [
@@ -32,25 +36,25 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-28 relative">
+    <section id="about" className={`${isMobileMockup ? 'py-12' : 'py-20 lg:py-28'} relative`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <div className={`max-w-3xl ${isMobileMockup ? 'mb-8' : 'mb-16'}`}>
           <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">
             01. Background & Philosophy
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
+          <h2 className={`${isMobileMockup ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-bold tracking-tight text-white mb-4`}>
             About Me
           </h2>
-          <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">
+          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
             Full Stack & Web Developer pursuing Master of Computer Applications (MCA) at RVS College with a 9.3 CGPA, combining strong computational foundations with practical full-stack project delivery.
           </p>
         </div>
 
         {/* 2-Column Split: Detailed Story with Portrait vs Key Competencies */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className={`grid grid-cols-1 ${isMobileMockup ? '' : 'lg:grid-cols-12'} gap-8 items-start`}>
           {/* Left Column: Narrative Story & Career Objective */}
-          <div className="lg:col-span-7 space-y-6 text-zinc-300 leading-relaxed text-base">
+          <div className={`${isMobileMockup ? '' : 'lg:col-span-7'} space-y-6 text-zinc-300 leading-relaxed text-base`}>
             {/* Visual Portrait Card from Sharon's site */}
             <div className="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 mb-6">
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden ring-2 ring-emerald-400/80 shadow-2xl shrink-0 group bg-zinc-950">
@@ -134,7 +138,7 @@ export function About() {
           </div>
 
           {/* Right Column: 4 Engineering Pillars */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className={`${isMobileMockup ? 'mt-6' : 'lg:col-span-5'} space-y-4`}>
             <h3 className="text-base font-semibold text-zinc-100 mb-2">
               Engineering Disciplines & Problem Solving
             </h3>

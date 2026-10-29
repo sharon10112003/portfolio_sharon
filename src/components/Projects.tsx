@@ -5,9 +5,10 @@ import { Project, ProjectCategory } from '../types';
 
 interface ProjectsProps {
   onSelectProject: (project: Project) => void;
+  isMobileMockup?: boolean;
 }
 
-export function Projects({ onSelectProject }: ProjectsProps) {
+export function Projects({ onSelectProject, isMobileMockup = false }: ProjectsProps) {
   const { projects } = portfolioData;
   const [filter, setFilter] = useState<ProjectCategory>('All');
 
@@ -66,7 +67,7 @@ export function Projects({ onSelectProject }: ProjectsProps) {
         </div>
 
         {/* Projects Grid: 2-column responsive layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className={`grid grid-cols-1 ${isMobileMockup ? '' : 'lg:grid-cols-2'} gap-8`}>
           {filteredProjects.map((project) => (
             <article
               key={project.id}
