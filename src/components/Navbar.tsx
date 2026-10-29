@@ -64,9 +64,12 @@ export function Navbar({ onOpenResume, onOpenGuide }: NavbarProps) {
           >
             <div className="relative w-8 h-8 rounded-lg overflow-hidden ring-1.5 ring-emerald-400/80 shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform shrink-0 bg-zinc-900">
               <img
-                src="/public/assets/aistudio/Profile2_39c053e6.jpeg"
+                src="/assets/aistudio/Profile2_39c053e6.jpeg"
                 alt={portfolioData.personal.name}
                 className="w-full h-full object-cover object-top"
+                onError={(e) => {
+                  e.currentTarget.src = '/assets/sharon/profile2.jpeg';
+                }}
               />
             </div>
             <span className="text-base sm:text-lg font-bold tracking-tight text-zinc-100 group-hover:text-emerald-400 transition-colors">

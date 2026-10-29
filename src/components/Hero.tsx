@@ -55,9 +55,12 @@ export function Hero({ onOpenResume }: HeroProps) {
             <div className="flex items-center gap-4 mb-6 p-2.5 sm:p-3 pr-6 rounded-2xl bg-zinc-900/90 border border-emerald-500/30 backdrop-blur-xl w-fit shadow-2xl shadow-emerald-500/10">
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden ring-2 ring-emerald-400 shadow-md shrink-0 bg-zinc-950">
                 <img
-                  src="/public/assets/aistudio/Profile2_39c053e6.jpeg"
+                  src="/assets/aistudio/Profile2_39c053e6.jpeg"
                   alt="Sharon K. G."
                   className="w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.currentTarget.src = '/assets/sharon/profile2.jpeg';
+                  }}
                 />
                 <span
                   className="absolute bottom-1 right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-2 ring-zinc-950 animate-pulse"
@@ -266,9 +269,12 @@ export function Hero({ onOpenResume }: HeroProps) {
                 {visualMode === 'portrait' ? (
                   <div className="relative aspect-[3/4] sm:aspect-[4/5] max-h-[560px] bg-zinc-950 overflow-hidden group">
                     <img
-                      src="/public/assets/aistudio/Profile2_39c053e6.jpeg"
+                      src="/assets/aistudio/Profile2_39c053e6.jpeg"
                       alt="Sharon K. G. — Full Stack Developer"
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-102"
+                      onError={(e) => {
+                        e.currentTarget.src = '/assets/sharon/profile2.jpeg';
+                      }}
                       referrerPolicy="no-referrer"
                     />
                     {/* Subtle bottom gradient resting over shirt */}
@@ -319,9 +325,12 @@ export function Hero({ onOpenResume }: HeroProps) {
                 ) : visualMode === 'studio' ? (
                   <div className="relative aspect-[3/4] sm:aspect-[4/5] max-h-[560px] bg-zinc-950 overflow-hidden group">
                     <img
-                      src="/public/assets/aistudio/Profilepic_c694042d.jpeg"
+                      src="/assets/aistudio/Profilepic_c694042d.jpeg"
                       alt="Sharon K. G. — Profile"
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-102"
+                      onError={(e) => {
+                        e.currentTarget.src = '/assets/sharon/profile.jpeg';
+                      }}
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-transparent pointer-events-none" />

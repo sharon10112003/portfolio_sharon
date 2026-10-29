@@ -55,9 +55,12 @@ export function About() {
             <div className="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 mb-6">
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden ring-2 ring-emerald-400/80 shadow-2xl shrink-0 group bg-zinc-950">
                 <img
-                  src="/public/assets/aistudio/Profile2_39c053e6.jpeg"
+                  src="/assets/aistudio/Profile2_39c053e6.jpeg"
                   alt="Sharon K G — Web Developer"
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.src = '/assets/sharon/profile2.jpeg';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent pointer-events-none" />
               </div>

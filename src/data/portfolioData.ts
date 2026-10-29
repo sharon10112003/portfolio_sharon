@@ -215,7 +215,7 @@ export const portfolioData: PortfolioData = {
       period: 'Sep 2025 – Oct 2025 (2 Months)',
       summary:
         'A responsive modern e-commerce platform developed using HTML5, CSS3, and JavaScript tailored for browsing and purchasing consumer electronics and home appliances with interactive shopping cart and checkout flows.',
-      image: '/src/assets/images/ecommerce_modern_mockup_1793015715916.jpg',
+      image: '/assets/sharon/ecommerce.jpeg',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Web Design', 'DOM Manipulation', 'LocalStorage'],
       keyFeatures: [
         'Product Catalog Presentation: Comprehensive catalog browsing for electronics and home appliances with high-resolution imagery',
@@ -245,7 +245,7 @@ export const portfolioData: PortfolioData = {
       period: 'Interactive Web Application',
       summary:
         'A sleek, responsive interactive calculator application built with modern HTML5, CSS3, and JavaScript supporting multi-operation math, decimal precision, and keyboard events.',
-      image: '/src/assets/images/calculator_modern_mockup_1793015734453.jpg',
+      image: '/assets/sharon/calculator.jpg',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Event Listeners'],
       keyFeatures: [
         'Multi-Operation Engine: Supports addition, subtraction, multiplication, division, and percentage calculations',
@@ -273,7 +273,7 @@ export const portfolioData: PortfolioData = {
       period: 'Interactive Web Application',
       summary:
         'A clean and intuitive productivity task manager built with HTML5, CSS3, and JavaScript featuring task creation, completion toggles, deletion, and local storage state persistence.',
-      image: '/src/assets/images/todolist_modern_mockup_1793015749370.jpg',
+      image: '/assets/sharon/todolists.jpeg',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'LocalStorage', 'DOM APIs'],
       keyFeatures: [
         'Task Lifecycle: Add new tasks, toggle task completion states, and delete finished tasks',
@@ -301,7 +301,7 @@ export const portfolioData: PortfolioData = {
       period: 'Jun 2026 – Aug 2026 (3 Months)',
       summary:
         'A comprehensive full-stack college election voting system engineered with Node.js, Express.js, React.js (Vite), Tailwind CSS, and MongoDB with Mongoose, featuring real-time vote analytics and rigorous security controls.',
-      image: '/src/assets/images/campusvote_voting_system_1792946450881.jpg',
+      image: '/assets/images/campusvote_voting_system_1792946450881.jpg',
       technologies: [
         'React.js (Vite)',
         'Node.js',
@@ -341,7 +341,7 @@ export const portfolioData: PortfolioData = {
       period: 'Mar 2026 – Apr 2026 (2 Months)',
       summary:
         'A full-stack ticket management and issue handling application built using React.js, Node.js, Express.js, and MongoDB to streamline team support and bug resolution pipelines.',
-      image: '/src/assets/images/task_management_system_1792946450626.jpg',
+      image: '/assets/images/task_management_system_1792946450626.jpg',
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'CSS3'],
       keyFeatures: [
         'Ticket Lifecycle Management: Create, edit, assign, prioritize, and track issue statuses from open to resolved',
@@ -371,7 +371,7 @@ export const portfolioData: PortfolioData = {
       period: 'Mobile Application',
       summary:
         'A cross-platform mobile grocery shopping application engineered with React Native and Expo, featuring dedicated customer and administrator experiences.',
-      image: '/src/assets/images/freshmart_grocery_app_1792946450234.jpg',
+      image: '/assets/images/freshmart_grocery_app_1792946450234.jpg',
       technologies: ['React Native', 'Expo', 'JavaScript', 'REST APIs', 'AsyncStorage'],
       keyFeatures: [
         'Customer Experience: Intuitive product catalog with category-based filtering (Produce, Dairy, Pantry, etc.)',

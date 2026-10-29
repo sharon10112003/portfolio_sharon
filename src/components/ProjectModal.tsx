@@ -51,6 +51,16 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (project.id === 'ecommerce-website' && !target.src.includes('ecommerce_modern_mockup')) {
+                  target.src = '/assets/images/ecommerce_modern_mockup_1793015715916.jpg';
+                } else if (project.id === 'calculator-app' && !target.src.includes('calculator_modern_mockup')) {
+                  target.src = '/assets/images/calculator_modern_mockup_1793015734453.jpg';
+                } else if (project.id === 'todo-list-app' && !target.src.includes('todolist_modern_mockup')) {
+                  target.src = '/assets/images/todolist_modern_mockup_1793015749370.jpg';
+                }
+              }}
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent pointer-events-none" />
